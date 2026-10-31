@@ -10,7 +10,7 @@
   "homepage": "https://ochre.digital",
   "repository": "https://github.com/ochre-digital-x/ochre-odoo",
   "license": "MIT",
-  "logo": "assets/logo.svg",
+  "logo": "assets/logo.png",
   "category": "Data & Analytics",
   "keywords": ["odoo", "erp", "odoo-19", "crm", "accounting", "inventory", "python", "mcp"],
   "variables": {

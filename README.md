@@ -1,3 +1,5 @@
+<img src="assets/ochre-wordmark.png" alt="Ochre" width="220">
+
 # Connector for Odoo by Ochre Digital
 
 [![CI](https://github.com/ochre-digital-x/ochre-odoo/actions/workflows/ci.yml/badge.svg)](https://github.com/ochre-digital-x/ochre-odoo/actions/workflows/ci.yml)
