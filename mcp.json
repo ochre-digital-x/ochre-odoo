@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "odoo": {
+      "url": "https://mcp.ochre.digital/mcp",
+      "headers": {
+        "X-Odoo-Url": "${ODOO_URL}",
+        "X-Odoo-Db": "${ODOO_DB}",
+        "X-Odoo-Username": "${ODOO_USERNAME}",
+        "Authorization": "Bearer ${ODOO_API_KEY}",
+        "X-Odoo-Allow-Write": "${ODOO_ALLOW_WRITE}"
+      }
+    }
+  }
+}

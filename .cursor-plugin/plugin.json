@@ -1,0 +1,49 @@
+{
+  "name": "ochre-odoo",
+  "displayName": "Connector for Odoo by Ochre Digital",
+  "version": "1.1.0",
+  "description": "Hosted connector between your agent and Odoo. Query live sales, pipeline, receivables and stock, inspect models and fields, and build or upgrade custom modules for Odoo 19 with a breaking-change linter. Read only by default, no delete. Built by Ochre Digital, an Odoo implementation partner.",
+  "author": {
+    "name": "Ochre Digital (Ochre Tech and Marketing Pvt Ltd)",
+    "email": "contact@ochre.digital"
+  },
+  "homepage": "https://ochre.digital",
+  "repository": "https://github.com/ochre-digital-x/ochre-odoo",
+  "license": "MIT",
+  "logo": "assets/logo.svg",
+  "category": "Data & Analytics",
+  "keywords": ["odoo", "erp", "odoo-19", "crm", "accounting", "inventory", "python", "mcp"],
+  "variables": {
+    "type": "object",
+    "properties": {
+      "ODOO_URL": {
+        "type": "string",
+        "title": "Odoo URL",
+        "description": "Base URL of your Odoo instance, e.g. https://yourcompany.odoo.com"
+      },
+      "ODOO_DB": {
+        "type": "string",
+        "title": "Database name",
+        "description": "Odoo database name"
+      },
+      "ODOO_USERNAME": {
+        "type": "string",
+        "title": "Login",
+        "description": "Odoo user login (usually an email)"
+      },
+      "ODOO_API_KEY": {
+        "type": "string",
+        "title": "API key",
+        "description": "Create one in Odoo under Preferences > Account Security > New API Key"
+      },
+      "ODOO_ALLOW_WRITE": {
+        "type": "string",
+        "title": "Allow writes",
+        "description": "Set to true to enable create and update tools. Leave false for read-only.",
+        "enum": ["false", "true"],
+        "default": "false"
+      }
+    },
+    "required": ["ODOO_URL", "ODOO_DB", "ODOO_USERNAME", "ODOO_API_KEY"]
+  }
+}

@@ -1,0 +1,12 @@
+---
+description: Safe use of the Odoo MCP tools against live business data
+alwaysApply: true
+---
+
+When using the odoo MCP tools:
+- Treat the connected database as production unless the user says otherwise.
+- Read before you write. Before odoo_create or odoo_update, show the user the exact model, record ids and values, and wait for an explicit yes.
+- Never attempt to delete records or call arbitrary methods. The server does not expose them and you should not work around that.
+- Keep queries small: request only the fields you need and use limit. Use odoo_count first when the size is unknown.
+- Do not paste customer personal data (phone, email, address, bank details) into answers unless the user asked for it.
+- Use odoo_model_fields to confirm field names before building a domain. Field names differ between Odoo versions.

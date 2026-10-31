@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "odoo-local": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/ochre-digital-x/ochre-odoo#subdirectory=server", "ochre-odoo-mcp"],
+      "env": {
+        "ODOO_URL": "http://localhost:8069",
+        "ODOO_DB": "mydb",
+        "ODOO_USERNAME": "admin",
+        "ODOO_API_KEY": "replace-me",
+        "ODOO_ALLOW_WRITE": "false"
+      }
+    }
+  }
+}

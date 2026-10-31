@@ -1,0 +1,43 @@
+---
+description: Odoo v19 coding standards and breaking changes for custom module work
+globs: ["**/__manifest__.py", "**/models/*.py", "**/views/*.xml", "**/security/*.csv", "**/data/*.xml", "**/controllers/*.py"]
+alwaysApply: false
+---
+
+When writing or editing Odoo modules targeting version 19 (or 20), apply these rules. They come from production upgrades and fail at install time if ignored.
+
+Security and groups
+- res.groups.category_id was removed. Use privilege_id, a Many2one to res.groups.privilege, which carries category_id.
+- res.users.groups_id is now group_ids. res.groups.users is now user_ids.
+- The groups= attribute on views and menus still works.
+
+Models
+- Do not use _sql_constraints. Declare constraints as class attributes: `_name_uniq = models.Constraint("UNIQUE(name)", "Name must be unique.")`
+- Use `from odoo.modules.registry import Registry`, not `from odoo import registry`.
+- res.partner.title no longer exists.
+
+Sales, purchase, accounting
+- Order line unit field is product_uom_id, not product_uom.
+- Tax field is tax_ids, not tax_id.
+
+Product and stock
+- product.type values are consu, service and combo. There is no 'product'.
+- is_storable lives in the stock module. Depend on stock if you need it. Base purchase depends only on account.
+- uom_po_id was removed. Use uom_id, and uom_ids for packagings.
+
+Views
+- Kanban templates use <card>, not kanban-box.
+- Search view <group> takes no expand, string or name attributes. Use a bare <group> containing group_by filters.
+
+Controllers
+- @http.route(type='json') is now type='jsonrpc'.
+
+Config
+- without_demo is boolean, not 'all'.
+
+Field namespaces
+- Before adding a field to a core model, search existing installed modules for the name. Redefining a field another module owns with a different type forces a column conversion and can overflow (for example an 18 digit external id stored as Char being redefined as Integer).
+
+Verification
+- Static checks are a blocklist. A live install is the real test: `odoo-bin -c odoo.conf -d test -i <module> --stop-after-init`, then read the log for ERROR and WARNING lines.
+- When unsure of a field name, grep the Odoo 19 source for its definition.

@@ -1,0 +1,27 @@
+# Run on a VPS with Docker. Point DNS for mcp.ochre.digital (A record) at the VPS first.
+services:
+  mcp:
+    build: ../server
+    restart: unless-stopped
+    environment:
+      - OCHRE_RATE_PER_MIN=120
+      - OCHRE_RPC_TIMEOUT=30
+      - LOG_LEVEL=WARNING
+    expose:
+      - "8000"
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 512m
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on: [mcp]
+
+volumes:
+  caddy_data:

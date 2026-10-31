@@ -1,0 +1,7 @@
+# Access logging is off because request headers carry customer Odoo API keys.
+mcp.ochre.digital {
+    encode gzip
+    reverse_proxy mcp:8000 {
+        flush_interval -1
+    }
+}

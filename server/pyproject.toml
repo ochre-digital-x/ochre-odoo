@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ochre-odoo-mcp"
+version = "1.1.0"
+description = "MCP server for Odoo: read business data, inspect models and lint custom modules for Odoo v19. By Ochre Digital."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Ochre Tech and Marketing Pvt Ltd", email = "contact@ochre.digital" }]
+dependencies = ["mcp>=1.2.0,<2"]
+
+[project.urls]
+Homepage = "https://ochre.digital"
+
+[project.scripts]
+ochre-odoo-mcp = "ochre_odoo_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ochre_odoo_mcp"]
