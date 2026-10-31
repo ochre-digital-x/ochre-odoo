@@ -1,8 +1,8 @@
 {
   "name": "ochre-odoo",
   "displayName": "Connector for Odoo by Ochre Digital",
-  "version": "1.1.0",
-  "description": "Hosted connector between your agent and Odoo. Query live sales, pipeline, receivables and stock, inspect models and fields, and build or upgrade custom modules for Odoo 19 with a breaking-change linter. Read only by default, no delete. Built by Ochre Digital, an Odoo implementation partner.",
+  "version": "1.2.0",
+  "description": "Connects your agent to Odoo. Query live sales, pipeline, receivables and stock, inspect models and fields, and build or upgrade custom modules for Odoo 19 with a breaking-change linter. Read only by default, no delete. Built by Ochre Digital, an Odoo implementation partner.",
   "author": {
     "name": "Ochre Digital (Ochre Tech and Marketing Pvt Ltd)",
     "email": "contact@ochre.digital"

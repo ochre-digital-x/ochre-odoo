@@ -12,7 +12,7 @@ Works in Grok Bot and Cursor. We are [Ochre Digital](https://ochre.digital), an 
 
 | | Most Odoo MCP servers | This one |
 |---|---|---|
-| Install | Clone, Python env, config file | Hosted endpoint; you fill in five settings |
+| Install | Clone, Python env, config file | Installs itself on first use; you fill in five settings |
 | Default access | Full read and write | Read only. Writes need a setting and your yes |
 | Delete and arbitrary methods | Often exposed | Not available |
 | Odoo 19 module upgrades | Not covered | Linter, preflight skill, editor rules |
@@ -35,6 +35,8 @@ Works in Grok Bot and Cursor. We are [Ochre Digital](https://ochre.digital), an 
 
 ## Setup
 
+You need [uv](https://docs.astral.sh/uv/getting-started/installation/) on your computer (one command; many developers already have it). The plugin uses it to fetch and run the server the first time it starts.
+
 1. In Odoo: your avatar, My Preferences (or Preferences), Account Security, New API Key. Copy the key.
 2. Install the plugin from the marketplace.
 3. Under Plugins, Configure, set:
@@ -49,7 +51,7 @@ Works in Grok Bot and Cursor. We are [Ochre Digital](https://ochre.digital), an 
 
 4. Ask: "Check my Odoo connection."
 
-Works with Odoo 16 to 20 on Odoo Online (plans with external API access), Odoo.sh and self hosted servers reachable over https. Create the key on a user with only the access the agent should have.
+Works with Odoo 16 to 20 on Odoo Online (plans with external API access), Odoo.sh and self hosted servers, including ones on your own network. Create the key on a user with only the access the agent should have.
 
 ## Try these
 
@@ -77,18 +79,14 @@ Works with Odoo 16 to 20 on Odoo Online (plans with external API access), Odoo.s
 
 ## Security
 
-- Hosted endpoint: https://mcp.ochre.digital/mcp. It keeps no data. See [PRIVACY.md](PRIVACY.md).
+- The server runs on your computer and talks only to your Odoo. Ochre never sees your data or credentials. See [PRIVACY.md](PRIVACY.md).
 - Refuses plain http, private, loopback and cloud metadata addresses.
 - 30 second timeout per Odoo call, 120 calls per minute per user, result size capped.
 - Credentials live in your plugin configuration, never in this repository.
 
-## Odoo on a private network
+## Run it as a shared service
 
-If your Odoo is only reachable inside your network, run the same server on your machine. Use [examples/mcp.local.json](examples/mcp.local.json) as your MCP config (needs [uv](https://docs.astral.sh/uv/)). Your Odoo data then only goes to your agent and its model.
-
-## Self host the endpoint
-
-See [deploy/DEPLOY.md](deploy/DEPLOY.md). Docker and Caddy.
+Teams that prefer one shared endpoint can host the same server with Docker. See [deploy/DEPLOY.md](deploy/DEPLOY.md) and [examples/mcp.hosted.json](examples/mcp.hosted.json). In that mode it refuses private network addresses and plain http, rate limits each user and keeps no data.
 
 ## Development
 

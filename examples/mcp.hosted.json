@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "odoo": {
+      "url": "https://your-server.example.com/mcp",
+      "headers": {
+        "X-Odoo-Url": "https://yourcompany.odoo.com",
+        "X-Odoo-Db": "yourcompany",
+        "X-Odoo-Username": "you@yourcompany.com",
+        "Authorization": "Bearer your-odoo-api-key",
+        "X-Odoo-Allow-Write": "false"
+      }
+    }
+  }
+}
